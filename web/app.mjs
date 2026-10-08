@@ -13,7 +13,7 @@ function show(r,isDemo=false){
  $('asof').textContent=`As of ${dateText(today)}`;
  $('milestones').replaceChildren();
  for(const [label,date] of t.milestones){const li=document.createElement('li');const title=document.createElement('span');title.textContent=label;const dt=document.createElement('time');dt.textContent=dateText(date);dt.dateTime=new Date(Math.floor(date/DAY)*DAY).toISOString().slice(0,10);li.append(title,dt);$('milestones').append(li);}
- $('result').hidden=false;$('message').textContent=isDemo?'Paparan contoh. Enter your student number untuk rekod anda.':'Record found. Your target timeline is shown below.';
+ $('result').hidden=false;$('message').textContent=isDemo?'This is a sample timeline. Enter your student number to view your own record.':'Record found. Your target timeline is shown below.';
 }
 $('search').addEventListener('submit',async e=>{e.preventDefault();$('result').hidden=true;$('submit').disabled=true;$('message').textContent='Finding your record…';try{const res=await fetch(new URL('/api/lookup', document.querySelector('meta[name="lookup-origin"]')?.content || window.location.origin),{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({studentId:$('student').value.trim()})});const data=await res.json();if(!res.ok)throw Error(data.error||'Unable to complete the search. Please try again.');show(data.record);}catch(err){$('message').textContent=err.message;}finally{$('submit').disabled=false;}});
 $('demo').addEventListener('click',()=>show(demoRecord,true));$('print').addEventListener('click',()=>window.print());
