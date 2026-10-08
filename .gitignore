@@ -2,3 +2,5 @@ dist/data.json
 *.xlsm
 *.xlsx
 .DS_Store
+
+pages-dist/

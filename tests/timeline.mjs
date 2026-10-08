@@ -12,7 +12,8 @@ for(const [level,mode,months] of [['PHD','S',12],['PHD','SP',18],['MASTERS','S',
  const t=timeline({registered:'2024-09-16',gotMonths:48.08,level,mode});
  assert.equal((t.drp-t.registered)/DAY,Math.ceil(months/12*365));
 }
-assert.equal(dateText(timeline({registered:'2024-09-16',gotMonths:48.08,level:'PHD',mode:'S'}).got),'15 Sep 2028');
+assert.equal(dateText(timeline({registered:'2024-09-16',gotMonths:48.08,level:'PHD',mode:'S'}).got),'15 Sept 2028');
 assert.throws(()=>timeline({registered:'bad',gotMonths:1}));
 assert.throws(()=>timeline({registered:'2024-09-16',gotMonths:48.08,level:'UNKNOWN',mode:'S'}));
 console.log('Timeline checks passed for '+Object.keys(data.records).length+' records and all four DRP combinations.');
+
