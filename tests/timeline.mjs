@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
-import {timeline,DAY,dateText} from '../dist/logic.mjs';
-const data=JSON.parse(readFileSync(new URL('../dist/data.json',import.meta.url)));
+import {timeline,DAY,dateText} from '../web/logic.mjs';
+const data=JSON.parse(readFileSync(new URL('../private/records.json',import.meta.url)));
 for(const r of Object.values(data.records)){
  const t=timeline(r);
  assert.equal(t.submission,t.got-185*DAY);

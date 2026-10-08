@@ -1,4 +1,4 @@
+dist/data.json
 *.xlsm
 *.xlsx
 .DS_Store
-__pycache__/
