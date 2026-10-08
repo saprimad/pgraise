@@ -1,11 +1,17 @@
 import {timeline,dateText,DAY} from './logic.mjs';
 const $=id=>document.getElementById(id);
-const demoRecord={program:'PH990',level:'PHD',mode:'S',registered:'2024-09-16',gotMonths:48.08};
+const demoRecord={program:'PH990',level:'PHD',mode:'S',registered:'2024-09-16',gotMonths:48.08,name:'Sample postgraduate student',faculty:'Faculty of Pharmacy, UiTM',mainSupervisor:'Sample main supervisor',coSupervisors:['Sample co-supervisor']};
 
 function show(r,isDemo=false){
  const t=timeline(r),today=Date.parse(new Intl.DateTimeFormat('en-CA',{timeZone:'Asia/Kuala_Lumpur',year:'numeric',month:'2-digit',day:'2-digit'}).format(new Date())+'T00:00:00Z');
  $('program').textContent=`${r.program} · ${r.level==='PHD'?'Doctor of Philosophy':'Master’s degree'}`;
  $('metadata').textContent=`${r.mode==='S'?'Full-time':'Part-time'} · Registered ${dateText(t.registered)}${isDemo?' · SAMPLE RECORD':''}`;
+ $('student-name').textContent=r.name?.trim()||'Not recorded';
+ $('faculty').textContent=r.faculty?.trim()||'Faculty of Pharmacy, UiTM';
+ $('main-supervisor').textContent=r.mainSupervisor?.trim()||'Not recorded';
+ const coSupervisors=Array.isArray(r.coSupervisors)?r.coSupervisors.filter(name=>typeof name==='string'&&name.trim()):[];
+ $('co-supervisors').replaceChildren();
+ if(coSupervisors.length){const list=document.createElement('ul');for(const name of coSupervisors){const item=document.createElement('li');item.textContent=name;list.append(item);}$('co-supervisors').append(list);}else{$('co-supervisors').textContent='Not recorded';}
  $('got').textContent=dateText(t.got);$('submission').textContent=dateText(t.submission);
  const days=Math.floor(t.got/DAY)-Math.floor(today/DAY);
  $('remaining-label').textContent=days>=0?'Time until the GOT target':'Time since the GOT target';
