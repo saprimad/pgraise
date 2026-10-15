@@ -6,3 +6,12 @@ header{border-top:4px solid var(--purple)}.mark{box-shadow:0 4px 16px #70208220}
 /* Academic Calendar V2 */
 .top-nav{display:flex;gap:18px;flex-wrap:wrap}.top-nav a{color:var(--purple);font-size:13px;font-weight:650;text-decoration:none}.top-nav a:hover{text-decoration:underline}
 .calendar-panel{background:#fff;border:1px solid var(--line);border-radius:16px;padding:26px;margin-top:30px}.calendar-head{display:flex;justify-content:space-between;gap:20px;align-items:center}.calendar-head p:not(.eyebrow){font-size:13px;color:var(--muted)}.filter-label{font-size:12px;min-width:175px}select{font:inherit;display:block;width:100%;padding:12px;border-radius:9px;background:white;color:var(--ink);border:1px solid #cebad6;margin:10px 0}.calendar-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin:18px 0}.calendar-event{padding:16px;background:#faf7fc;border:1px solid var(--line);border-radius:12px;min-width:0}.calendar-event-top{display:flex;align-items:start;justify-content:space-between;gap:8px}.calendar-event strong{font-size:14px}.calendar-event time{display:block;margin:10px 0;white-space:normal}.calendar-event small{color:var(--muted);line-height:1.5}.calendar-status{font-size:10px;white-space:nowrap;padding:5px 7px;background:#eee4f3;border-radius:12px;color:var(--purple)}@media(max-width:650px){.calendar-head{display:block}.calendar-list{grid-template-columns:1fr}.calendar-panel{padding:18px}.top-nav{gap:9px}.top-nav a{font-size:11px}}@media print{.calendar-panel,.top-nav,#calendar-ics,#student-mode{display:none}.calendar-event{break-inside:avoid}.calendar-list{grid-template-columns:1fr}}
+
+#got-finder[hidden],#academic-calendar[hidden],#got-explain[hidden]{display:none!important}
+.top-nav a[aria-current="page"]{border-bottom:3px solid var(--purple);padding-bottom:7px}
+.calendar-options{display:flex;flex-wrap:wrap;gap:12px 20px;border:1px solid var(--line);border-radius:12px;margin:15px 0;padding:14px}
+.calendar-options legend{font-weight:700;font-size:13px}
+.calendar-options label,.event-choice-label{display:flex;align-items:center;gap:9px;margin:0;font-size:13px}
+.calendar-options input,.event-choice-label input{width:auto;min-width:auto;accent-color:var(--purple)}
+.event-choice-label strong{flex:1}
+@media print{#academic-calendar{display:none!important}#got-finder[hidden]{display:none!important}}
