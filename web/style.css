@@ -15,3 +15,15 @@ header{border-top:4px solid var(--purple)}.mark{box-shadow:0 4px 16px #70208220}
 .calendar-options input,.event-choice-label input{width:auto;min-width:auto;accent-color:var(--purple)}
 .event-choice-label strong{flex:1}
 @media print{#academic-calendar{display:none!important}#got-finder[hidden]{display:none!important}}
+
+/* Accessible prominent top navigation */
+.top-nav{display:flex;gap:8px;align-items:center;padding:5px;background:#f0e8f5;border:1px solid var(--line);border-radius:14px}
+.top-nav a{display:flex;justify-content:center;align-items:center;min-height:48px;padding:12px 20px;border-radius:10px;font-size:15px;font-weight:750;line-height:1.2;text-align:center;text-decoration:none;color:var(--purple);border:0!important}
+.top-nav a[aria-current="page"]{background:var(--purple);color:#fff;box-shadow:0 2px 8px #70208226;padding-bottom:12px}
+.top-nav a:hover{filter:brightness(.95);text-decoration:none}
+@media(max-width:650px){
+ header{flex-wrap:wrap;gap:16px}
+ .top-nav{width:100%;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:5px}
+ .top-nav a{min-height:50px;padding:12px 9px;font-size:14px;white-space:normal}
+}
+@media print{.top-nav{display:none!important}}
